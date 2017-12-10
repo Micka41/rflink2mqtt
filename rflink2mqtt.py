@@ -122,8 +122,6 @@ BFORECAST_LOOKUP = {
     '4': 'rain',
 }
 
-
-
 def on_connect(client, userdata, flags, rc):
         client.subscribe("rflink/tx",0)
 
@@ -131,7 +129,7 @@ def on_message(client, userdata, message):
 	#print ("Send to RFLINK " + str(message.payload.decode("utf-8")))
 	logging.info("Send to RFLINK " + str(message.payload.decode("utf-8")))
 	#my_logger.debug("Send to RFLINK: " + str(message.payload.decode("utf-8")))
-        ser.write( str(message.payload.decode("utf-8"))+"\r\n")
+    ser.write(str(message.payload.decode("utf-8"))+"\r\n")
 
 def decode_packet(packet):
 	#print ("DEBUG: " + packet)
