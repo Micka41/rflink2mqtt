@@ -163,13 +163,13 @@ def decode_packet(packet):
 			switch = value
 		else:
 			if switch:
-				client.publish("rflink/"+name+"/"+id+"/"+switch, value, 0)
-				#print "rflink/%s/%s/%s / value: %s" % (name, id, switch, value)
-				logger.info("rflink/" + str(name) + "/" + str(id) + "/" + str(switch) + " / value: " + str(value))
+				client.publish("rflink/"+id+"/"+name+"/"+switch, value, 0)
+				#print "rflink/%s/%s/%s / value: %s" % (id, name, switch, value)
+				logger.info("rflink/" + str(id) + "/" + str(name) + "/" + str(switch) + " / value: " + str(value))
 			else:
-				client.publish("rflink/"+name+"/"+id, value, 0)
-				#print "rflink/%s/%s / value: %s" % (name, id, value)
-				logger.info("rflink/" + str(name) + "/" + str(id) + " / value: " + str(value))
+				client.publish("rflink/"+id+"/"+name, value, 0)
+				#print "rflink/%s/%s / value: %s" % (id, name, value)
+				logger.info("rflink/" + str(id) + "/" + str(name) + " / value: " + str(value))
 		
 	if find == 0:
 		client.publish("rflink/rx", packet, 0)
