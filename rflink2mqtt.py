@@ -129,7 +129,7 @@ def on_message(client, userdata, message):
 	#print ("Send to RFLINK " + str(message.payload.decode("utf-8")))
 	logging.info("Send to RFLINK " + str(message.payload.decode("utf-8")))
 	#my_logger.debug("Send to RFLINK: " + str(message.payload.decode("utf-8")))
-    ser.write(str(message.payload.decode("utf-8"))+"\r\n")
+	ser.write(str(message.payload.decode("utf-8"))+"\r\n")
 
 def decode_packet(packet):
 	#print ("DEBUG: " + packet)
