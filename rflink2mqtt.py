@@ -6,10 +6,11 @@ import re
 import logging
 from enum import Enum
 from typing import Any, Callable, Dict, Generator, cast
+import configparser
 
+confg = configparser.ConfifParser()
+config.read('/etc/defaults/rflink2mqtt.ini')
 
-serialdev = '/dev/ttyACM0'
-broker = 'x.x.x.x'
 DELIM = ';'
 
 logger = logging.getLogger('rflink2mqtt')
@@ -21,8 +22,8 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.INFO)
 
 ser = serial.Serial(
-        port=serialdev,
-        baudrate = 57600,
+        port=config['rflink']['port'],
+        baudrate = int(config['rflink']['rate']),
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
         bytesize=serial.EIGHTBITS,
@@ -179,7 +180,8 @@ def decode_packet(packet):
 
 
 client = mqtt.Client()
-client.connect(broker, 1883)
+clinet.username_pw_set(config['mqtt']['user'], password=config['mqtt']['pass'])
+client.connect(config['mqtt']['host'], 1883)
 client.on_connect = on_connect
 client.on_message = on_message
 client.loop_start()
