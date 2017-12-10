@@ -8,8 +8,8 @@ from enum import Enum
 from typing import Any, Callable, Dict, Generator, cast
 import configparser
 
-confg = configparser.ConfifParser()
-config.read('/etc/defaults/rflink2mqtt.ini')
+config = configparser.ConfigParser()
+config.read('/etc/default/rflink2mqtt.ini')
 
 DELIM = ';'
 
@@ -180,7 +180,7 @@ def decode_packet(packet):
 
 
 client = mqtt.Client()
-clinet.username_pw_set(config['mqtt']['user'], password=config['mqtt']['pass'])
+client.username_pw_set(config['mqtt']['user'], password=config['mqtt']['pass'])
 client.connect(config['mqtt']['host'], 1883)
 client.on_connect = on_connect
 client.on_message = on_message

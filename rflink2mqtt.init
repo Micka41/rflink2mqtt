@@ -2,8 +2,8 @@
 
 ### BEGIN INIT INFO
 # Provides:          rflink2mqtt
-# Required-Start:    $remote_fs $syslog
-# Required-Stop:     $remote_fs $syslog
+# Required-Start:    $remote_fs $syslog $network
+# Required-Stop:     $remote_fs $syslog $network
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: RFLink to MQTT Gateway
@@ -29,8 +29,8 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 
 do_start () {
     log_daemon_msg "Starting system $DAEMON_NAME daemon"
-    #start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --exec $DAEMON -- $DAEMON_OPTS || return 1
+    start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
+    #start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --exec $DAEMON -- $DAEMON_OPTS || return 1
     log_end_msg $?
 }
 do_stop () {
