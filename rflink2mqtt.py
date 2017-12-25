@@ -133,6 +133,7 @@ def on_message(client, userdata, message):
 
 def decode_packet(packet):
 	#print ("DEBUG: " + packet)
+	id = "0000"	# default value in case we don't parse one.
 	logger.info(packet)
 	try:
 		node_id, _, protocol, attrs = x.split(DELIM, 3)
