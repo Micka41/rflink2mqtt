@@ -1,6 +1,27 @@
 # rflink2mqtt
 Python script to send rflink data to MQTT with sensors decodage.
 
+Dépendance :
+```
+pip3 install pyserial
+pip3 install paho-mqtt
+```
+
+Config rflink2mqtt.ini :
+```
+[rflink]
+port = /dev/ttyACM2
+rate = 57600
+
+[mqtt]
+host = xxxxxxxxxx
+user = mqtt
+pass = xxxxxxxxx
+```
+
+Installation :
+Lancer le script install.sh
+
 example with openHAB
 
 Receive data:
