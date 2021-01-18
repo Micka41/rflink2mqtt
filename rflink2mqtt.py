@@ -186,7 +186,7 @@ client.on_message = on_message
 client.loop_start()
 
 while True:
-    x=ser.readline()
+    x=ser.readline().decode()
     x = x.strip("\r\n")
     try:
         decode_packet(x)
