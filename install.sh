@@ -6,7 +6,7 @@ then
   cp rflink2mqtt.init /etc/init.d/rflink2mqtt
   chmod +x /etc/init.d/rflink2mqtt
 
-  cp rflink2mqtt.ini /etc/defaults/rflink2mqtt.ini
+  cp rflink2mqtt.ini /etc/default/rflink2mqtt.ini
 
   mkdir /usr/local/libexec
   cp rflink2mqtt.py /usr/local/libexec/rflink2mqtt.py
